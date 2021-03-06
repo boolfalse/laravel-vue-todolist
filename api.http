@@ -1,0 +1,29 @@
+POST /api/items HTTP/1.1
+Host: laravel-vue-todolist.site
+Content-Type: application/json
+Content-Length: 140
+
+{
+    "title": "The rough clock elegantly slept."
+}
+
+###
+
+GET /api/items HTTP/1.1
+Host: laravel-vue-todolist.site
+
+###
+
+PUT /api/items/1 HTTP/1.1
+Host: laravel-vue-todolist.site
+Content-Type: application/json
+Content-Length: 25
+
+{
+    "completed": true
+}
+
+###
+
+DELETE /api/items/1 HTTP/1.1
+Host: laravel-vue-todolist.site
