@@ -3,6 +3,8 @@
     <div class="todolist-item">
         <input
             type="checkbox"
+            @change="changeItem()"
+            v-model="item.completed"
             class="cursor-pointer"
         />
         <span :class="[ item.completed ? 'completed' : '', 'item-title' ]">{{item.title}}</span>
@@ -12,6 +14,21 @@
 <script>
 export default {
     props: ['item'],
+    methods: {
+        changeItem() {
+            axios.put('/api/items/' + this.item.id, {
+                completed: this.item.completed
+            })
+                .then((res) => {
+                    if (res.data.success) {
+                        this.$emit('itemChanged');
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    }
 };
 </script>
 

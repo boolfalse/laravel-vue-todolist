@@ -7,6 +7,7 @@
         </div>
         <todo-list
             :items="items"
+            v-on:reloadList="getList()"
         />
     </div>
 </template>

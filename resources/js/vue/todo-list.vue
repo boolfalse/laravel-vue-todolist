@@ -5,6 +5,7 @@
             <list-item
                 :item="item"
                 class="todolist-item"
+                v-on:itemChanged="$emit('reloadList')"
             />
         </div>
     </div>
