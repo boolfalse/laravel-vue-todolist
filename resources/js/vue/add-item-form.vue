@@ -4,39 +4,41 @@
         <input type="text" v-model="item.title">
         <font-awesome-icon
             icon="plus-square"
-            @click="addItem()"
+            @click="createItem()"
             :class="[ item.title ? 'active' : 'inactive', 'plus', 'cursor-pointer' ]"
         />
     </div>
 </template>
 
 <script>
-    export default {
-        data: () => {
-            return {
-                item: {
-                    title: "Test todolist item"
-                }
-            }
-        },
-        methods: {
-            addItem() {
-                if (this.item) {
-                    let title = this.item.title;
-
-                    axios.post('/api/items', {
-                        title: title
-                    }).then((res) => {
-                        if (res.success) {
-                            this.item.title = '';
-                        }
-                    }).catch((err) => {
-                        console.log(err);
-                    });
-                }
+export default {
+    data: () => {
+        return {
+            item: {
+                title: "" // Test todolist item
             }
         }
-    };
+    },
+    methods: {
+        createItem() {
+            let title = this.item.title;
+            if (title) {
+                axios.post('/api/items', {
+                    title: title
+                })
+                    .then((res) => {
+                        if (res.data.success) {
+                            this.item.title = '';
+                            this.$emit('reloadList');
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            }
+        }
+    }
+};
 </script>
 
 <style>
@@ -60,10 +62,7 @@ input {
 .active {
     color: #00ce25
 }
-.active {
+.inactive {
     color: #999999;
-}
-.cursor-pointer {
-    cursor: pointer;
 }
 </style>

@@ -5,23 +5,46 @@
             <h2 id="todolist_title">Todo List</h2>
             <add-item-form />
         </div>
-        <list-item />
+        <todo-list
+            :items="items"
+        />
     </div>
 </template>
 
 <script>
 import AddItemForm from "./add-item-form";
-import ListItem from "./list-item";
+import TodoList from "./todo-list";
 
 export default {
     components: {
-        ListItem,
+        TodoList,
         AddItemForm
+    },
+    data: () => {
+        return {
+            items: []
+        }
+    },
+    methods: {
+        getList() {
+            axios.get('/api/items')
+                .then((res) => {
+                    if (res.data.success) {
+                        this.items = res.data.data
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    },
+    created() { // runs when this current component created
+        this.getList();
     }
 }
 </script>
 
-<style scoped>
+<style>
 .app-todolist-container {
     width: 350px;
     margin: auto;
@@ -30,8 +53,10 @@ export default {
     background: #e6e6e6;
     padding: 10px;
 }
-
 #todolist_title {
     text-align: center;
+}
+.cursor-pointer {
+    cursor: pointer;
 }
 </style>
