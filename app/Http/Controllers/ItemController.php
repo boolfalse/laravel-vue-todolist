@@ -28,11 +28,6 @@ class ItemController extends Controller
 
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         $item = Item::create([
@@ -44,16 +39,6 @@ class ItemController extends Controller
             'message' => "Successfully created.",
             'data' => $item,
         ], 201);
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
     }
 
     public function update(Request $request, $id)

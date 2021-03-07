@@ -5,7 +5,7 @@
             <list-item
                 :item="item"
                 class="todolist-item"
-                v-on:itemChanged="$emit('reloadList')"
+                v-on:itemChanged="reloadList"
             />
         </div>
     </div>
@@ -15,7 +15,19 @@
 import ListItem from './list-item';
 
 export default {
-    props: ['items'],
+    props: {
+        items: {
+            type: Array,
+            default() {
+                return []
+            }
+        }
+    },
+    methods: {
+        reloadList() {
+            this.$emit('reloadList');
+        }
+    },
     components: {
         ListItem
     }

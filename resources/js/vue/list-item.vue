@@ -16,7 +16,14 @@
 
 <script>
 export default {
-    props: ['item'],
+    props: {
+        item: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
+    },
     methods: {
         changeItem() {
             axios.put('/api/items/' + this.item.id, {
