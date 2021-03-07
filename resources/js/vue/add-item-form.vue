@@ -1,7 +1,10 @@
 
 <template>
     <div>
-        Add Item Form
+        <input type="text">
+        <font-awesome-icon
+            icon="plus-square"
+        />
     </div>
 </template>
 
