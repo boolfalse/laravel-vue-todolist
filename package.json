@@ -1,5 +1,11 @@
 {
-    "private": true,
+    "author": "BoolFalse",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/boolfalse/laravel-vue-todolist.git"
+    },
+    "name": "vue-shopping-cart",
+    "version": "0.1.0",
     "scripts": {
         "dev": "npm run development",
         "development": "mix",

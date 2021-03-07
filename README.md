@@ -1,5 +1,5 @@
 
-## Simple TodoList with Laravel (v8) & Vue.js 
+## REST TodoList with Laravel (v8) & Vue.js 
 
 ### Setup:
 - Clone repository and cd into it:
@@ -30,6 +30,7 @@ npm run watch
 - VueJS
 - MySQL
 - TodoList
+- REST CRUD
 
 ### Author:
 [BoolFalse](https://boolfalse.com/).
