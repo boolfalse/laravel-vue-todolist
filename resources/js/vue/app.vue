@@ -3,7 +3,9 @@
     <div class="app-todolist-container">
         <div class="heading">
             <h2 id="todolist_title">Todo List</h2>
-            <add-item-form />
+            <add-item-form
+                v-on:reloadList="getList()"
+            />
         </div>
         <todo-list
             :items="items"
